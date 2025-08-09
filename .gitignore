@@ -1,0 +1,38 @@
+# Global ignores for this repo
+
+# Node/Firebase
+firebase-debug.log
+.firebase/
+
+# Flutter & Dart
+.dart_tool/
+.packages
+.flutter-plugins
+.flutter-plugins-dependencies
+.metadata
+build/
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# Platform build outputs
+**/android/.gradle/
+**/android/app/release/
+**/ios/Pods/
+**/macos/Pods/
+
+# Firebase platform configs (provide your own locally)
+**/google-services.json
+**/GoogleService-Info.plist
+
+# Generated files
+**/GeneratedPluginRegistrant.*
+**/generated_plugin_registrant.*
+**/generated_plugins.cmake
+
+# Misc
+pubspec.lock
+*.log
+

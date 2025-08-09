@@ -1,0 +1,25 @@
+include: package:flutter_lints/flutter.yaml
+
+linter:
+  rules:
+    # Keep to defaults; add any project-specific rules below
+    prefer_const_constructors: true
+    avoid_print: true
+    always_use_package_imports: false
+
+analyzer:
+  exclude:
+    - build/**
+    - ios/**
+    - android/**
+    - macos/**
+    - windows/**
+    - linux/**
+
+
+
+analyzer:
+  exclude:
+    # Keep generated internals excluded if needed, but include custom code
+    # so lints catch issues early.
+    # - lib/flutter_flow/**

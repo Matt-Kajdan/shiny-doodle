@@ -1,0 +1,34 @@
+# Flutter & Dart
+.dart_tool/
+.packages
+.flutter-plugins
+.flutter-plugins-dependencies
+.metadata
+build/
+
+# IDE
+.idea/
+.vscode/
+
+# Platform build outputs
+android/.gradle/
+android/app/release/
+ios/Pods/
+macos/Pods/
+
+# Firebase & local config
+google-services.json
+**/GoogleService-Info.plist
+.firebase/
+.env
+
+# Generated files
+**/GeneratedPluginRegistrant.*
+**/generated_plugin_registrant.*
+**/generated_plugins.cmake
+
+# Misc
+pubspec.lock
+*.iml
+*.log
+

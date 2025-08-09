@@ -1,0 +1,2 @@
+NSCameraUsageDescription = "Aby zrobić zdjęcie lub nakręcić film, ta aplikacja potrzebuje zgody na dostęp do aparatu.";
+NSPhotoLibraryUsageDescription = "Aby wysyłać pliki, ta aplikacja potrzebuje zgody na dostęp do galerii.";
