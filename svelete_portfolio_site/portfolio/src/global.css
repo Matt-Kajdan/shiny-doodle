@@ -1,0 +1,123 @@
+/* Importing fonts from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700&family=Roboto:wght@400;700&display=swap');
+
+/* * {
+    outline: 1px solid var(--primary);
+} */
+
+:root {
+    --primary: #333;
+    --background: #fff;
+
+    --def-shadow: 0 0 1rem 0 #eee;
+    --hov-shadow: 0 0 1rem 0 #ddd;
+
+    --cyan: #38b5e5;
+    --grey: #c3c3c3;
+    --indigo: #5160ce;
+    --lavender: #a191db;
+    --orange: #ff8939;
+    --pink: #ff97ce;
+    --pistachio: #5af29e;
+    --yellow: #ffda00;
+}
+
+
+body {
+    font-family: 'Roboto', sans-serif;
+    color: var(--primary);
+    background-color: var(--background);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: calc(100vw - 10rem);
+    margin: 0 5rem;
+}
+
+main {
+    line-height: 1.2;
+    font-family: 'Roboto', sans-serif; /* Default font family */
+    display: flex;
+    flex-direction: column;
+}
+
+button {
+    background-color: transparent;
+    color: var(--primary);
+    cursor: pointer;
+    border: none;
+    outline: none;
+    margin: 0;
+    padding: 0;
+}
+
+button:hover {
+    color: #777;
+}
+
+h1, h2, h3 {
+    font-family: 'Plus Jakarta Sans', sans-serif; /* Font for headings */
+    font-weight: 700;
+}
+
+h1 {
+    font-size: 4rem;
+    margin: 0 0 1rem 0;
+}
+
+h2 {
+    font-size: 2rem;
+    margin: 0 0 0.7rem 0;
+}
+
+h3 {
+    font-size: 1.5rem;
+    margin: 0 0 0.5rem 0;
+}
+
+strong {
+    font-weight: 700;
+}
+
+p {
+    line-height: 1.4;
+}
+
+a {
+    font-weight: 700;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    text-decoration: none;
+    color: currentColor; /* Overrides the default color of the href */
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+ul {
+    padding: 0;
+}
+
+/* Dark mode styles */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --primary: #fff;
+        --background: #333;
+        --def-shadow: 0 0 1rem 0 #333;
+        --hov-shadow: 0 0 1rem 0 #222;    
+    }
+}
+
+
+@media (min-width:320px)  { /* smartphones, iPhone, portrait 480x320 phones */ }
+@media (min-width:481px)  { /* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */ }
+@media (min-width:641px)  { /* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */ }
+@media (min-width:961px)  { /* tablet, landscape iPad, lo-res laptops ands desktops */ }
+@media (min-width:1025px) { /* big landscape tablets, laptops, and desktops */ }
+@media (min-width:1281px) { /* hi-res laptops and desktops */ }
+
+/* Responsive design adjustments */
+/* @media (max-width: 768px) {
+    main {
+        
+    }
+} */
