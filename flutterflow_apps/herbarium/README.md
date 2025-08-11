@@ -32,10 +32,13 @@ A Flutter/FlutterFlow app for creating and managing a personal herbarium: add pl
 
 ### Screenshots
 
-![Showcase 1](docs/showcase/showcase-1.jpeg)
-![Showcase 2](docs/showcase/showcase-2.jpeg)
-![Showcase 3](docs/showcase/showcase-3.jpeg)
-![Showcase 4](docs/showcase/showcase-4.jpeg)
+<p>
+  <img src="docs/showcase/showcase-1.jpeg" width="24%" alt="Screenshot 1" />
+  <img src="docs/showcase/showcase-2.jpeg" width="24%" alt="Screenshot 2" />
+  <img src="docs/showcase/showcase-3.png" width="24%" alt="Screenshot 3" />
+  <img src="docs/showcase/showcase-4.jpeg" width="24%" alt="Screenshot 4" />
+  
+</p>
 
 ### Data model (Firestore: `plants` collection)
 Fields on each document include:
