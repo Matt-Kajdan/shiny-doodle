@@ -2,9 +2,11 @@ import yfinance as yf
 import pandas as pd
 import matplotlib.pyplot as plt
 import warnings
+import sys # Import the sys module to access command-line arguments
 
-# Suppress SettingWithCopyWarning, common in pandas
-warnings.filterwarnings('ignore', category=pd.core.common.SettingWithCopyWarning)
+# Suppress common pandas-related warnings without referencing removed internals
+warnings.filterwarnings('ignore', category=FutureWarning)
+warnings.filterwarnings('ignore', category=UserWarning)
 
 def fetch_data(ticker_symbol, start_date, end_date):
     """Fetches historical stock data from Yahoo Finance."""
@@ -17,22 +19,16 @@ def fetch_data(ticker_symbol, start_date, end_date):
 
 def analyze_data(data):
     """Calculates financial metrics for the stock data."""
-    # Calculate Moving Averages (20-day and 50-day)
     data['MA20'] = data['Close'].rolling(window=20).mean()
     data['MA50'] = data['Close'].rolling(window=50).mean()
-
-    # Calculate Daily Percentage Change
     data['Daily_Change_%'] = data['Close'].pct_change() * 100
-
-    # Calculate Volatility (standard deviation of daily returns)
     data['Volatility'] = data['Daily_Change_%'].rolling(window=20).std()
-
     print("\nAnalysis complete.")
     return data
 
 def plot_data(data, ticker_symbol):
     """Plots the stock closing price and moving averages."""
-    plt.style.use('seaborn-v0_8-darkgrid') # Use a nice style for the plot
+    plt.style.use('seaborn-v0_8-darkgrid')
     plt.figure(figsize=(14, 7))
     plt.plot(data['Close'], label='Close Price', color='blue', alpha=0.8)
     plt.plot(data['MA20'], label='20-Day Moving Average', color='orange', linestyle='--')
@@ -41,8 +37,6 @@ def plot_data(data, ticker_symbol):
     plt.xlabel('Date', fontsize=12)
     plt.ylabel('Price (USD)', fontsize=12)
     plt.legend()
-
-    # Save the plot to a file
     plot_filename = f'{ticker_symbol}_analysis_plot.png'
     plt.savefig(plot_filename)
     print(f"\nPlot saved as {plot_filename}")
@@ -56,7 +50,15 @@ def export_data(data, ticker_symbol):
 
 if __name__ == "__main__":
     # --- Configuration ---
-    ticker = 'AAPL'  # Example: Apple Inc.
+    # Check if a command-line argument (ticker) was provided
+    if len(sys.argv) > 1:
+        ticker = sys.argv[1].upper() # Use the provided ticker, convert to uppercase
+    else:
+        # If no ticker is provided, use a default and inform the user
+        ticker = 'AAPL'
+        print("No ticker provided. Using default: AAPL")
+        print("Usage: python analysis.py <TICKER_SYMBOL>")
+
     start = '2023-01-01'
     end = '2023-12-31'
 
