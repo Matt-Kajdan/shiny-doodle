@@ -30,6 +30,13 @@ A Flutter/FlutterFlow app for creating and managing a personal herbarium: add pl
 - **Media**: `image_picker`, `file_picker`, `cached_network_image`
 - **UI/Theming**: FlutterFlow theme system, light/dark modes
 
+### Screenshots
+
+![Showcase 1](docs/showcase/showcase-1.jpeg)
+![Showcase 2](docs/showcase/showcase-2.jpeg)
+![Showcase 3](docs/showcase/showcase-3.jpeg)
+![Showcase 4](docs/showcase/showcase-4.jpeg)
+
 ### Data model (Firestore: `plants` collection)
 Fields on each document include:
 - `name_common` (String)
