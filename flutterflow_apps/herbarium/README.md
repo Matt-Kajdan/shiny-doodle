@@ -33,10 +33,10 @@ A Flutter/FlutterFlow app for creating and managing a personal herbarium: add pl
 ### Screenshots
 
 <p>
-  <img src="docs/showcase/showcase-1.jpeg" width="24%" alt="Screenshot 1" />
-  <img src="docs/showcase/showcase-2.jpeg" width="24%" alt="Screenshot 2" />
-  <img src="docs/showcase/showcase-3.png" width="24%" alt="Screenshot 3" />
-  <img src="docs/showcase/showcase-4.jpeg" width="24%" alt="Screenshot 4" />
+  <img src="docs/showcase/showcase-1.jpeg" width="22%" style="vertical-align: top;" alt="Screenshot 1" />
+  <img src="docs/showcase/showcase-2.jpeg" width="22%" style="vertical-align: top;" alt="Screenshot 2" />
+  <img src="docs/showcase/showcase-3.png" width="22%" style="vertical-align: top;" alt="Screenshot 3" />
+  <img src="docs/showcase/showcase-4.jpeg" width="22%" style="vertical-align: top;" alt="Screenshot 4" />
   
 </p>
 
