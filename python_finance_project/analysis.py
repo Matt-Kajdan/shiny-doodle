@@ -2,11 +2,13 @@ import yfinance as yf
 import pandas as pd
 import matplotlib.pyplot as plt
 import warnings
-import sys # Import the sys module to access command-line arguments
+import sys  # Import the sys module to access command-line arguments
+import datetime as dt
 
 # Suppress common pandas-related warnings without referencing removed internals
 warnings.filterwarnings('ignore', category=FutureWarning)
 warnings.filterwarnings('ignore', category=UserWarning)
+
 
 def fetch_data(ticker_symbol, start_date, end_date):
     """Fetches historical stock data from Yahoo Finance."""
@@ -17,6 +19,7 @@ def fetch_data(ticker_symbol, start_date, end_date):
     print(f"Successfully fetched data for {ticker_symbol}")
     return data
 
+
 def analyze_data(data):
     """Calculates financial metrics for the stock data."""
     data['MA20'] = data['Close'].rolling(window=20).mean()
@@ -25,6 +28,7 @@ def analyze_data(data):
     data['Volatility'] = data['Daily_Change_%'].rolling(window=20).std()
     print("\nAnalysis complete.")
     return data
+
 
 def plot_data(data, ticker_symbol):
     """Plots the stock closing price and moving averages."""
@@ -42,25 +46,69 @@ def plot_data(data, ticker_symbol):
     print(f"\nPlot saved as {plot_filename}")
     plt.show()
 
+
 def export_data(data, ticker_symbol):
     """Exports the data to a CSV file."""
     csv_filename = f'{ticker_symbol}_analyzed_data.csv'
     data.to_csv(csv_filename)
     print(f"Data exported to {csv_filename}")
 
+
+def parse_cli_args(argv: list[str]) -> tuple[str, str, str]:
+    """Parses CLI args: ticker [start] [end]. Dates are YYYY-MM-DD.
+    Defaults to last 90 days ending today if dates omitted.
+    Ensures dates are not in the future and start < end.
+    Returns ISO date strings (YYYY-MM-DD).
+    """
+    today = dt.date.today()
+    ninety_days = dt.timedelta(days=90)
+
+    # Ticker
+    if len(argv) > 1:
+        ticker_symbol = argv[1].upper()
+    else:
+        ticker_symbol = 'AAPL'
+        print("No ticker provided. Using default: AAPL")
+        print("Usage: python analysis.py <TICKER_SYMBOL> [START_YYYY-MM-DD] [END_YYYY-MM-DD]")
+
+    # End date
+    if len(argv) > 3:
+        try:
+            end_date = dt.datetime.strptime(argv[3], "%Y-%m-%d").date()
+        except ValueError:
+            print(f"Invalid end date format: {argv[3]}. Expected YYYY-MM-DD. Using today.")
+            end_date = today
+    else:
+        end_date = today
+
+    if end_date > today:
+        print(f"End date {end_date} is in the future. Using today {today} instead.")
+        end_date = today
+
+    # Start date
+    if len(argv) > 2:
+        try:
+            start_date = dt.datetime.strptime(argv[2], "%Y-%m-%d").date()
+        except ValueError:
+            print(f"Invalid start date format: {argv[2]}. Expected YYYY-MM-DD. Using last 90 days.")
+            start_date = end_date - ninety_days
+    else:
+        start_date = end_date - ninety_days
+
+    if start_date > today:
+        print(f"Start date {start_date} is in the future. Using last 90 days ending today.")
+        start_date = end_date - ninety_days
+
+    if start_date >= end_date:
+        print(f"Start date {start_date} is not before end date {end_date}. Using last 90 days.")
+        start_date = end_date - ninety_days
+
+    return ticker_symbol, start_date.isoformat(), end_date.isoformat()
+
+
 if __name__ == "__main__":
     # --- Configuration ---
-    # Check if a command-line argument (ticker) was provided
-    if len(sys.argv) > 1:
-        ticker = sys.argv[1].upper() # Use the provided ticker, convert to uppercase
-    else:
-        # If no ticker is provided, use a default and inform the user
-        ticker = 'AAPL'
-        print("No ticker provided. Using default: AAPL")
-        print("Usage: python analysis.py <TICKER_SYMBOL>")
-
-    start = '2023-01-01'
-    end = '2023-12-31'
+    ticker, start, end = parse_cli_args(sys.argv)
 
     # --- Fetch Data ---
     stock_data = fetch_data(ticker, start, end)
