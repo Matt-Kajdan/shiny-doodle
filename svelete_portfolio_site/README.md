@@ -22,7 +22,7 @@ src/
 ├── lib/components/          # Reusable components (Card, Modal, Navbar, Project)
 ├── routes/                  # Page routes and layouts
 ├── static/                  # Images and assets
-└── global.css              # Global styles and CSS variables
+└── global.css               # Global styles and CSS variables
 ```
 
 ## Key Features
