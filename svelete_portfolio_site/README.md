@@ -43,10 +43,10 @@ src/
 
 The site builds to a `build/` folder ready for any static hosting service (GitHub Pages, Netlify, Vercel, etc.).
 
-## Copyright Notice
+## Notice
 
 **All images, designs, and visual content displayed on this portfolio site are 100% my own original work (Matt Kajdan). I claim full copyright on all visual assets and designs showcased here.**
-
+You can see the current version of the deployed site at mkajdan.com
 ---
 
 © 2024 Matt Kajdan - MK Studio
