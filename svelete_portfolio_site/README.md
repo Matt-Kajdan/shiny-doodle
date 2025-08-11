@@ -1,26 +1,52 @@
-## Svelte Portfolio Site
+# SvelteKit Portfolio Site
 
-This is a SvelteKit project for my software/design portfolio. It is configured for static export and lives in the `portfolio/` subfolder of the repo.
+My super-simple portfolio website built with SvelteKit, TypeScript, and Vite. Features responsive design, accessibility best practices, and static export for easy deployment.
 
-### Scripts
-- `dev`: start the dev server
-- `build`: static build to `portfolio/build`
-- `preview`: preview the production build
-- `test`: run Playwright tests
-- `lint` / `format`: code style
+## Quick Start
 
-### Run locally
 ```bash
-cd portfolio
+# Install dependencies
 npm install
-npm run dev
-```
 
-### Build
-```bash
-cd portfolio
+# Start development server
+npm run dev
+
+# Build for production
 npm run build
 ```
 
-### Deploy
-The site is statically exported using `@sveltejs/adapter-static`. The built assets are written to `portfolio/build`.
+## Project Structure
+
+```
+src/
+├── lib/components/          # Reusable components (Card, Modal, Navbar, Project)
+├── routes/                  # Page routes and layouts
+├── static/                  # Images and assets
+└── global.css              # Global styles and CSS variables
+```
+
+## Key Features
+
+- **Responsive Layout**: Automatically adapts from desktop (side-by-side) to mobile (stacked)
+- **Image Gallery**: Modal viewer with keyboard navigation (although the projects don't have multiple images for now)
+- **Dark/Light Mode**: Automatic theme switching
+- **Static Export**: Built with `@sveltejs/adapter-static` for easy hosting
+
+## Why SvelteKit?
+
+- **Zero JS by default** - Only loads JavaScript when needed
+- **Static generation** - Perfect for portfolio sites
+- **Built-in routing** - File-based routing with automatic code splitting
+- **TypeScript support** - Full type safety and IntelliSense
+
+## Deployment
+
+The site builds to a `build/` folder ready for any static hosting service (GitHub Pages, Netlify, Vercel, etc.).
+
+## Copyright Notice
+
+**All images, designs, and visual content displayed on this portfolio site are 100% my own original work (Matt Kajdan). I claim full copyright on all visual assets and designs showcased here.**
+
+---
+
+© 2024 Matt Kajdan - MK Studio
