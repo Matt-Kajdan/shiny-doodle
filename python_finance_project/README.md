@@ -26,10 +26,25 @@ A Python project for financial analysis and data processing.
 
 ## Usage
 
-Run the analysis script:
+Run the analysis script with defaults (AAPL, last ~90 days):
 ```bash
 python analysis.py
 ```
+
+Provide a different ticker (still defaults to last ~90 days ending today):
+```bash
+python analysis.py TSLA
+```
+
+Provide a custom date range (YYYY-MM-DD):
+```bash
+python analysis.py TSLA 2024-01-01 2024-06-30
+```
+
+Notes:
+- If dates are omitted, the script uses the last 90 days ending today.
+- Future dates are clamped to today automatically.
+- If the start date is invalid or not before the end date, the script falls back to the last 90 days.
 
 ## Project Structure
 
