@@ -3,7 +3,7 @@ import pandas as pd
 
 def fetch_data(ticker_symbol, start_date, end_date):
     """Fetches historical stock data from Yahoo Finance."""
-    data = yf.download(ticker_symbol, start=start_date, end=end_date)
+    data = yf.download(ticker_symbol, start=start_date, end=end_date, auto_adjust=False)
     if data.empty:
         print(f"No data found for {ticker_symbol}. Please check the ticker.")
         return None
@@ -37,5 +37,10 @@ if __name__ == "__main__":
     if stock_data is not None:
         # --- Analyze Data ---
         analyzed_data = analyze_data(stock_data)
-        print("\nData with analysis:")
-        print(analyzed_data.tail())  # Show the last few rows with calculations
+        
+        # --- Show Formatted Data ---
+        print("\nData with analysis (last 5 rows):")
+        # Format the display with fewer decimal places for readability
+        display_data = analyzed_data[['Close', 'MA20', 'MA50', 'Daily_Change_%', 'Volatility']].tail()
+        display_data = display_data.round(2)  # Round to 2 decimal places
+        print(display_data.to_string())
